@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest verison of Zotero</string>
 	<key>Identifier</key>
-	<string>com.github.CRCT-recipe.recipe.zotero</string>
+	<string>com.github.CRCT-recipe.recipe.download.zotero</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
