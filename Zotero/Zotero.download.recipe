@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest verison of Zotero</string>
 	<key>Identifier</key>
-	<string>com.github.CRCT-recipe.recipe.download.zotero</string>
+	<string>com.github.CRCT-recipe.download.zotero </string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -35,7 +35,7 @@
 				<string>https://www.zotero.org/download/client/dl?channel=release&amp;platform=mac&amp;version=%version%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
-	/Volumes/CRCT_S.Communs/02Informatique/99munki		</dict>
+			</dict>
 		</dict>
 		<dict>
 			<key>Processor</key>
