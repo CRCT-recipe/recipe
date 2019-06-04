@@ -17,7 +17,7 @@ See the following URLs for more info:
         <key>RELEASE</key>
         <string>latest</string>
         <key>LOCALE</key>
-        <string>en_US</string>
+        <string>fr</string>
         <key>NAME</key>
         <string>Thunderbird</string>
         <key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
