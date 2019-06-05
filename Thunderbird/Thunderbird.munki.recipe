@@ -2,73 +2,54 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Identifier</key>
-	<string>local.munki.Thunderbird</string>
-	<key>Input</key>
-	<dict>
-		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
-		<true/>
-		<key>LOCALE</key>
-		<string>fr</string>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/thunderbird</string>
-		<key>NAME</key>
-		<string>Thunderbird</string>
-		<key>RELEASE</key>
-		<string>latest</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>catalogs</key>
-			<array>
-				<string>testing</string>
-			</array>
-			<key>description</key>
-			<string>Mozilla Thunderbird is a free and open source mail client.</string>
-			<key>display_name</key>
-			<string>Mozilla Thunderbird</string>
-			<key>name</key>
-			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
-		</dict>
-	</dict>
-	<key>ParentRecipe</key>
-	<string>com.github.INSERM-TLS.munki.Thunderbird</string>
-	<key>ParentRecipeTrustInfo</key>
-	<dict>
-		<key>non_core_processors</key>
-		<dict>
-			<key>MozillaURLProvider</key>
-			<dict>
-				<key>git_hash</key>
-				<string>6f07d9524ef2bcc02bac5c892df7e725a8705dd2</string>
-				<key>path</key>
-				<string>~/recipe/Thunderbird/MozillaURLProvider.py</string>
-				<key>sha256_hash</key>
-				<string>5e6ee769d33326c85f6354ed75fce29614d833d50e6124cd7b70aa02959409cd</string>
-			</dict>
-		</dict>
-		<key>parent_recipes</key>
-		<dict>
-			<key>com.github.INSERM-TLS.download.Thunderbird</key>
-			<dict>
-				<key>git_hash</key>
-				<string>bf5dc85735b56e2e2739d29af989b923245bbd7c</string>
-				<key>path</key>
-				<string>~/recipe/Thunderbird/Thunderbird.download.recipe</string>
-				<key>sha256_hash</key>
-				<string>da1f4c7b2620fa1a5306871280f1b02fefaeed33d779a02842702366ca76bf6c</string>
-			</dict>
-			<key>com.github.INSERM-TLS.munki.Thunderbird</key>
-			<dict>
-				<key>git_hash</key>
-				<string>d20b158eb814d6d041bb9706c721ea2786aaeafd</string>
-				<key>path</key>
-				<string>~/recipe/Thunderbird/Thunderbird.munki.recipe</string>
-				<key>sha256_hash</key>
-				<string>60c3202cddb9fe5ea2e06b0a4610584282617eededc6d7e80c7df8efcf343a2d</string>
-			</dict>
-		</dict>
-	</dict>
+    <key>Description</key>
+    <string>Downloads Thunderbird disk image and imports into Munki.
+Some useful values for RELEASE are: 'latest', 'beta-latest'.
+LOCALE controls the language localization to be downloded.
+Examples include 'en-US', 'de', 'sv-SE', and 'zh-TW'
+See the following URLs for more info:
+    http://ftp.mozilla.org/pub/thunderbird/releases/latest/README.txt
+    http://ftp.mozilla.org/pub/thunderbird/releases/latest-beta/README.txt</string>
+    <key>Identifier</key>
+    <string>com.github.INSERM-TLS.munki.Thunderbird</string><key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/thunderbird</string>
+        <key>NAME</key>
+        <string>Thunderbird</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>Mozilla Thunderbird is a free and open source mail client.</string>
+            <key>display_name</key>
+            <string>Mozilla Thunderbird</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.INSERM-TLS.download.Thunderbird</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
 </dict>
 </plist>
