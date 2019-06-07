@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest Adobe Reader.
-Set MAJOR_VERSION to "10" to get the latest/last version of Adobe Reader 10 instead of 11.
-</string>
+    <string>Downloads the latest Adobe Reader. Set MAJOR_VERSION to "10" to get the latest/last version of Adobe Reader 10 instead of 11.</string>
     <key>Identifier</key>
     <string>com.github.INSERM-TLS.download.AdobeReader</string>
     <key>Input</key>

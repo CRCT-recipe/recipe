@@ -44,7 +44,7 @@
 	<key>MinimumVersion</key>
 	<string>0.5.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.INSERN-TLS.download.GIMP</string>
+	<string>com.github.INSERM-TLS.download.GIMP</string>
 	<key>Process</key>
 	<array>
 		<dict>

@@ -3,8 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads FlowJo and imports into munki.
-</string>
+	<string>Downloads FlowJo and imports into munki.recipe</string>
 	<key>Identifier</key>
 	<string>com.github.INSERM-TLS.munki.FlowJo</string>
 	<key>Input</key>
