@@ -31,7 +31,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.INSERM-TLS.download.GoogleCHrome</string>
+    <string>com.github.INSERM-TLS.download.GoogleChrome</string>
     <key>Process</key>
     <array>
         <dict>
