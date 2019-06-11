@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Download the current  release version of Fiji (zip/app)</string>
+	<key>Identifier</key>
+	<string>com.github.INSERM-TLS.download.Fiji</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>https://downloads.imagej.net/fiji/latest/fiji-macosx.zip</string>
+		<key>NAME</key>
+		<string>Fiji</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key> •••••••   URLTextSearcher Comment   ••••••• </key>
+			<string>UrlTextSearcher starts here</string>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>Version (?P&lt;version&gt;[0-9a-z\.]*)</string>
+				<key>url</key>
+				<string>https://imagej.nih.gov/ij/notes.html</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key> •••••••   URLDownloader Comment   ••••••• </key>
+			<string>URLDownloader starts here</string>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.zip</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key> •••••••   EndOfCheckPhase Comment   ••••••• </key>
+			<string>EndOfCheckPhase starts here</string>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
