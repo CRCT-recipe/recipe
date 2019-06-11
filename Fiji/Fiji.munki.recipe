@@ -37,7 +37,7 @@
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.INSERM-TLS.download.Fiji</string>
+	<string>com.github.INSERM-TLS.pkg.Fiji</string>
 	<key>Process</key>
 	<array>
 		<dict>
