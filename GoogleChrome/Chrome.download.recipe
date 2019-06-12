@@ -5,11 +5,11 @@
     <key>Description</key>
     <string>Downloads latest Google Chrome disk image.</string>
     <key>Identifier</key>
-    <string>com.github.INSERM-TLS.download.GoogleChrome</string>
+    <string>com.github.INSERM-TLS.download.Chrome</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>GoogleChrome</string>
+        <string>Chrome</string>
         <key>DOWNLOAD_URL</key>
         <string>https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg</string>
     </dict>
