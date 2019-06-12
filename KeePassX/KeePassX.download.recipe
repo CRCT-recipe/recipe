@@ -12,6 +12,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>KeePassX</string>
+        <key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
+        <false/>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
