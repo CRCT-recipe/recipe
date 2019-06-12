@@ -13,7 +13,7 @@
 		<key>NAME</key>
 		<string>KeePassX</string>
         <key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
-        <false/>
+        <true/>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
