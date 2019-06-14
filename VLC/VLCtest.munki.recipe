@@ -47,7 +47,7 @@
 
 <!-- (Facultatif) Si cette recette hérite des "Inputs" et des "Process" d'une autre recette, cela existe et correspond à l''Identifier' de la recette parent. -->
     <key>ParentRecipe</key>
-    <string>com.github.autopkg.download.VLC</string>
+    <string>com.github.autopkg.download.VLCtest</string>
 
 <!-- Séquence de processeurs utilisés pour exécuter la recette, ainsi que leurs paramètres. -->
     <key>Process</key>
