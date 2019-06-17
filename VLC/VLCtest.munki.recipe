@@ -23,7 +23,7 @@
         <dict>
             <key>catalogs</key>
             <array>
-<!-- (Facultatif) -->
+<!-- (Facultatif) Implémente l'application téléchargé dans le catalog "testing" pour permettre par le suite à l'administrateur de la passer dans le catalog "Prod" si il est satisfait de la mise a jour de cette application -->
                 <string>testing</string>
             </array>
             <key>description</key>
