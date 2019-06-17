@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
+
 <dict>
+
+<!-- (Facultatif, mais fortement recommandé) Description utile de la recette et des valeurs spécifiques à l'application que l'administrateur peut souhaiter remplacer. -->
     <key>Description</key>
-    <string>Downloads Firefox disk image and imports into Munki.
-Some useful values for RELEASE are: 'latest', 'esr-latest', 'beta-latest'.
-LOCALE controls the language localization to be downloded.
-Examples include 'en-US', 'de', 'sv-SE', and 'zh-TW'
-See the following URLs for more info:
-    http://ftp.mozilla.org/pub/firefox/releases/latest/README.txt
-    http://ftp.mozilla.org/pub/firefox/releases/latest-esr/README.txt
-    http://ftp.mozilla.org/pub/firefox/releases/latest-beta/README.txt</string>
+    <string>Télécharge la dernière image disque Firefox et l’importe dans Munki.</string>
+
+<!-- Une chaîne unique identifiant cette recette. Un format suggéré pour l'identifiant est une chaîne de domaine inversé suivie du type de recette et du nom du produit. -->
     <key>Identifier</key>
     <string>com.github.INSERM-TLS.download.Firefox</string>
+
+<!-- Ensemble de variables que l'administrateur peut remplacer sans avoir à modifier directement les paramètres ou la logique de la recette elle-même. -->
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
@@ -23,6 +23,7 @@ See the following URLs for more info:
         <dict>
             <key>catalogs</key>
             <array>
+<!-- (Facultatif) Implémente l'application téléchargé dans le catalog "testing" pour permettre par le suite à l'administrateur de la passer dans le catalog "Prod" si il est satisfait de la mise a jour de cette application -->
                 <string>testing</string>
             </array>
             <key>description</key>
@@ -35,10 +36,16 @@ See the following URLs for more info:
             <true/>
         </dict>
     </dict>
+
+<!-- (Facultatif) Version minimale de autopkg requise pour exécuter cette recette. -->
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
+
+    <!-- (Facultatif) Si cette recette hérite des "Inputs" et des "Process" d'une autre recette, cela existe et correspond à l''Identifier' de la recette parent. -->
     <string>com.github.INSERM-TLS.download.Firefox</string>
+
+<!-- Séquence de processeurs utilisés pour exécuter la recette, ainsi que leurs paramètres. -->
     <key>Process</key>
     <array>
         <dict>
@@ -50,6 +57,7 @@ See the following URLs for more info:
                 <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>
             <key>Processor</key>
+<!-- Importe un ".pkg" ou une ".dmg" dans le dépôt Munki. -->
             <string>MunkiImporter</string>
         </dict>
     </array>
