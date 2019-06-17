@@ -10,7 +10,7 @@
 
     <!-- Une chaîne unique identifiant cette recette. Un format suggéré pour l'identifiant est une chaîne de domaine inversé suivie du type de recette et du nom du produit. -->
     <key>Identifier</key>
-    <string>com.github.INSERM-tls.munki.Skype</string>
+    <string>com.github.INSERM-TLS.munki.Skype</string>
 
     <!-- Ensemble de variables que l'administrateur peut remplacer sans avoir à modifier directement les paramètres ou la logique de la recette elle-même. -->
     <key>Input</key>
