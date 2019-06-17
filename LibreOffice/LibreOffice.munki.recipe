@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Description</key>
-	<string>Downloads the current release version of LibreOffice and imports into Munki. Set RELEASE to either "fresh" or "still".
 
-LibreOffice Still is the stable version that has undergone more testing (over a longer time). It is usually recommended for more conservative use.
-LibreOffice Fresh is the stable version with the most recent features. Users interested in taking advantage of our most innovative features should download and use our fresh version.</string>
+<dict>
+
+<!-- (Facultatif, mais fortement recommandé) Description utile de la recette et des valeurs spécifiques à l'application que l'administrateur peut souhaiter remplacer. -->
+	<key>Description</key>
+	<string>Télécharge la dernière image disque VLC et l’importe dans Munki.</string>
+
+<!-- Une chaîne unique identifiant cette recette. Un format suggéré pour l'identifiant est une chaîne de domaine inversé suivie du type de recette et du nom du produit. -->
 	<key>Identifier</key>
 	<string>com.github.INSERM-TLS.munki.LibreOffice</string>
+
+<!-- Ensemble de variables que l'administrateur peut remplacer sans avoir à modifier directement les paramètres ou la logique de la recette elle-même. -->
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -23,12 +27,14 @@ LibreOffice Fresh is the stable version with the most recent features. Users int
 		<dict>
 			<key>catalogs</key>
 			<array>
+<!-- (Facultatif) Implémente l'application téléchargé dans le catalog "testing" pour permettre par le suite à l'administrateur de la passer dans le catalog "Prod" si il est satisfait de la mise a jour de cette application -->
 				<string>testing</string>
 			</array>
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string>LibreOffice is the free power-packed Open Source personal productivity suite for Windows, Macintosh and Linux, that gives you six feature-rich applications for all your document production and data processing needs: Writer, Calc, Impress, Draw, Math and Base.</string>
+			<string>LibreOffice est une suite bureautique puissante ; son interface claire et ses outils avancés libèrent votre créativité et accroissent votre productivité.
+					LibreOffice intègre plusieurs applications qui en font la suite bureautique Libre et Open Source la plus évoluée du marché.</string>
 			<key>developer</key>
 			<string>The Document Foundation</string>
 			<key>display_name</key>
@@ -41,10 +47,15 @@ LibreOffice Fresh is the stable version with the most recent features. Users int
 			<true/>
 		</dict>
 	</dict>
+
+<!-- (Facultatif) Version minimale de autopkg requise pour exécuter cette recette. -->
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
+<!-- (Facultatif) Si cette recette hérite des "Inputs" et des "Process" d'une autre recette, cela existe et correspond à l''Identifier' de la recette parent. -->
 	<key>ParentRecipe</key>
 	<string>com.github.INSERM-TLS.download.LibreOffice</string>
+
+<!-- Séquence de processeurs utilisés pour exécuter la recette, ainsi que leurs paramètres. -->
 	<key>Process</key>
 	<array>
 		<dict>
@@ -56,6 +67,7 @@ LibreOffice Fresh is the stable version with the most recent features. Users int
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
 			<key>Processor</key>
+<!-- Importe un ".pkg" ou une ".dmg" dans le dépôt Munki. -->
 			<string>MunkiImporter</string>
 		</dict>
 	</array>

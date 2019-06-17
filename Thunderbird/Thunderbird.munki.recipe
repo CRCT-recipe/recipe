@@ -26,7 +26,7 @@
                 <string>testing</string>
             </array>
             <key>description</key>
-            <string>Mozilla Thunderbird is a free and open source mail client.</string>
+            <string>Thunderbird est une application de messagerie facile à configurer et à personnaliser — et elle comporte de nombreuses fonctionnalités très pratiques !</string>
             <key>display_name</key>
             <string>Mozilla Thunderbird</string>
             <key>name</key>
