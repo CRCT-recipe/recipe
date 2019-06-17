@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<?xml vertion="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLISt 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Description</key>
-    <string>Downloads latest VLC disk image and imports into Munki.
 
-Please note that the values for supported_architectures in this
-recipe's pkginfo may be only evaluated accurately for early-generation
-Intel Macs as of Munki tools version 0.9.2.</string>
+<dict>
+
+<!-- (Facultatif, mais fortement recommandé) Description utile de la recette et des valeurs spécifiques à l'application que l'administrateur peut souhaiter remplacer. -->
+    <key>Description</key>
+    <string>Télécharge la dernière image disque VLC et l’importe dans Munki.</string>
+
+<!-- Une chaîne unique identifiant cette recette. Un format suggéré pour l'identifiant est une chaîne de domaine inversé suivie du type de recette et du nom du produit. -->
     <key>Identifier</key>
-    <string>com.github.INSERM-TLS.munki.VLC</string>
+    <string>com.github.INSERM-TLS.munki.VLCtest</string>
+
+<!-- Ensemble de variables que l'administrateur peut remplacer sans avoir à modifier directement les paramètres ou la logique de la recette elle-même. -->
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -20,10 +23,11 @@ Intel Macs as of Munki tools version 0.9.2.</string>
         <dict>
             <key>catalogs</key>
             <array>
+<!-- (Facultatif) Implémente l'application téléchargé dans le catalog "testing" pour permettre par le suite à l'administrateur de la passer dans le catalog "Prod" si il est satisfait de la mise a jour de cette application -->
                 <string>testing</string>
             </array>
             <key>description</key>
-            <string>VLC is a free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVD, Audio CD, VCD, and various streaming protocols.</string>
+            <string>VLC est un lecteur multimédia et une infrastructure multi-plateformes gratuits et à code source ouvert qui lisent la plupart des fichiers multimédia, ainsi que les DVD, CD audio, VCD et divers protocoles de diffusion en continu.</string>
             <key>display_name</key>
             <string>VLC Media Player</string>
             <key>name</key>
@@ -36,17 +40,24 @@ Intel Macs as of Munki tools version 0.9.2.</string>
             </array>
         </dict>
     </dict>
+
+<!-- (Facultatif) Version minimale de autopkg requise pour exécuter cette recette. -->
     <key>MinimumVersion</key>
     <string>0.2.0</string>
+
+<!-- (Facultatif) Si cette recette hérite des "Inputs" et des "Process" d'une autre recette, cela existe et correspond à l''Identifier' de la recette parent. -->
     <key>ParentRecipe</key>
     <string>com.github.INSERM-TLS.download.VLCtest</string>
+
+<!-- Séquence de processeurs utilisés pour exécuter la recette, ainsi que leurs paramètres. -->
     <key>Process</key>
     <array>
         <dict>
             <key>Processor</key>
+<!-- Fusionne deux dictionnaires pkginfo. -->
             <string>MunkiPkginfoMerger</string>
         </dict>
-        <dict>
+         <dict>
             <key>Arguments</key>
             <dict>
                 <key>pkg_path</key>
@@ -54,6 +65,8 @@ Intel Macs as of Munki tools version 0.9.2.</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>
+
+<!-- Importe un ".pkg" ou une ".dmg" dans le dépôt Munki. -->
             <key>Processor</key>
             <string>MunkiImporter</string>
         </dict>

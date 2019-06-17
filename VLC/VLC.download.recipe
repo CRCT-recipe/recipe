@@ -1,27 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<?xml vertion="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLISt 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Description</key>
-    <string>Downloads latest VLC disk image.
 
-Note that while VLC used to provide multiple Sparkle feeds for different architectures,
-they now support only a single OS X build architecture (Intel 64-bit) starting from
-version 2.1.0. For this reason, the appcast_url variable is now hardcoded in the recipe.
-</string>
+<dict>
+
+<!-- (Facultatif, mais fortement recommandé) Description utile de la recette et des valeurs spécifiques à l'application que l'administrateur peut souhaiter remplacer. -->
+    <key>description</key>
+    <string>Telecharge le derniere image disque de VLC.</string>
+
+<!-- Une chaîne unique identifiant cette recette. Un format suggéré pour l'identifiant est une chaîne de domaine inversé suivie du type de recette et du nom du produit. -->
     <key>Identifier</key>
-    <string>com.github.INSERM-TLS.download.VLC</string>
+    <string>com.github.INSERM-TLS.download.VLCtest</string>
+
+<!-- Ensemble de variables que l'administrateur peut remplacer sans avoir à modifier directement les paramètres ou la logique de la recette elle-même. -->
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>VLC</string>
     </dict>
+
+<!-- (Facultatif) Version minimale de autopkg requise pour exécuter cette recette. -->
     <key>MinimumVersion</key>
     <string>0.4.0</string>
+
+<!-- Séquence de processeurs utilisés pour exécuter la recette, ainsi que leurs paramètres. -->
     <key>Process</key>
     <array>
         <dict>
             <key>Processor</key>
+<!-- Fournit une URL vers le numéro de version le plus élevé ou la dernière mise à jour. -->
             <string>SparkleUpdateInfoProvider</string>
             <key>Arguments</key>
             <dict>
@@ -31,19 +38,26 @@ version 2.1.0. For this reason, the appcast_url variable is now hardcoded in the
         </dict>
         <dict>
             <key>Processor</key>
+<!-- Ce processeur télécharge une URL dans le dossier de cache de la recette et enregistre également certaines métadonnées fournies par l'en-tête de réponse du serveur Web:"Content-Length" et "ETag", si l'une ou l'autre est disponible.
+Si la recette est exécutée une deuxième fois, elles sont utilisées pour comparer notre copie en cache avec celle actuellement disponible à l'URL de téléchargement.
+Cela signifie qu'il est possible d'exécuter la recette plusieurs fois et de savoir qu'elle ne téléchargera pas à nouveau le fichier à chaque fois, mais qu'elle vérifiera à chaque fois. -->
             <string>URLDownloader</string>
-            <key>Arguments</key>
+            <key>Argument</key>
             <dict>
                 <key>filename</key>
-                <string>%NAME%.dmg</string>
+                    <string>%NAME%.dmg</string>
             </dict>
         </dict>
         <dict>
             <key>Processor</key>
+<!-- C'est un processeur factice utilisé uniquement par autopkg pour arrêter le traitement de la recette si l'option "check" a été donnée. Cela permet d'autopkg d'être exécuté selon un calendrier et de ne pas exécuter un traitement complet à chaque fois, s'il le juge nécessaire.
+Nous partons du principe que si nous l'avons mis en cache, nous avons déjà traité le reste de la recette, ce qui correspond généralement à toutes les étapes de post-traitement finales et à son importation dans un référentiel.
+Puisque cette étape est à la fin de cette recette de téléchargement, cela n’a vraiment aucun effet; mais lorsqu'une recette téléchargée est utilisée comme base pour une recette importée dans Munki ou générant un package, cette étape devient plus utile. -->
             <string>EndOfCheckPhase</string>
         </dict>
         <dict>
             <key>Processor</key>
+<!-- Vérifie la signature de l'ensemble d'applications ou du package du programme d'installation. -->
             <string>CodeSignatureVerifier</string>
             <key>Arguments</key>
             <dict>
