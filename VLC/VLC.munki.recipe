@@ -10,7 +10,7 @@
 
 <!-- Une chaîne unique identifiant cette recette. Un format suggéré pour l'identifiant est une chaîne de domaine inversé suivie du type de recette et du nom du produit. -->
     <key>Identifier</key>
-    <string>com.github.INSERM-TLS.munki.VLCtest</string>
+    <string>com.github.INSERM-TLS.munki.VLC</string>
 
 <!-- Ensemble de variables que l'administrateur peut remplacer sans avoir à modifier directement les paramètres ou la logique de la recette elle-même. -->
     <key>Input</key>
@@ -47,7 +47,7 @@
 
 <!-- (Facultatif) Si cette recette hérite des "Inputs" et des "Process" d'une autre recette, cela existe et correspond à l''Identifier' de la recette parent. -->
     <key>ParentRecipe</key>
-    <string>com.github.INSERM-TLS.download.VLCtest</string>
+    <string>com.github.INSERM-TLS.download.VLC</string>
 
 <!-- Séquence de processeurs utilisés pour exécuter la recette, ainsi que leurs paramètres. -->
     <key>Process</key>
@@ -65,9 +65,8 @@
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>
-
-<!-- Importe un ".pkg" ou une ".dmg" dans le dépôt Munki. -->
             <key>Processor</key>
+<!-- Importe un ".pkg" ou une ".dmg" dans le dépôt Munki. -->
             <string>MunkiImporter</string>
         </dict>
     </array>
