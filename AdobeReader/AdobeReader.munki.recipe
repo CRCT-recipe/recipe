@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Description</key>
-    <string>Downloads the latest Adobe Reader and imports into Munki.
-Set MAJOR_VERSION to "10" to get the latest/last version of Adobe Reader 10 instead of 11.
 
-Additional notes:
-- Reader ships as an installer pkg that deploys a .app, so we add it and
-Adobe Acrobat Pro.app to blocking_applications.
-- An installs array is also generated for the above .app.
-- The Reader website states that 10.6.4 is a minimum requirement for 11.
-- The preinstall_script is there to get around an oversight in the package's
-preflight script, looking to find a user's trash folder to copy the .app into.
-</string>
+<dict>
+
+<!-- (Facultatif, mais fortement recommandé) Description utile de la recette et des valeurs spécifiques à l'application que l'administrateur peut souhaiter remplacer. -->
+    <key>Description</key>
+    <string>Télécharge la dernière image disque AdobeReader et l’importe dans Munki.</string>
+
+<!-- Une chaîne unique identifiant cette recette. Un format suggéré pour l'identifiant est une chaîne de domaine inversé suivie du type de recette et du nom du produit. -->
     <key>Identifier</key>
     <string>com.github.INSERM-TLS.download.AdobeReader</string>
+
+<!-- Ensemble de variables que l'administrateur peut remplacer sans avoir à modifier directement les paramètres ou la logique de la recette elle-même. -->
     <key>Input</key>
     <dict>
         <key>LANGUAGE</key>
@@ -39,6 +36,7 @@ preflight script, looking to find a user's trash folder to copy the .app into.
             </array>
             <key>catalogs</key>
             <array>
+<!-- (Facultatif) Implémente l'application téléchargé dans le catalog "testing" pour permettre par le suite à l'administrateur de la passer dans le catalog "Prod" si il est satisfait de la mise a jour de cette application -->
                 <string>testing</string>
             </array>
             <key>description</key>
@@ -60,10 +58,16 @@ exit 0
             <true/>
         </dict>
     </dict>
+
+<!-- (Facultatif) Version minimale de autopkg requise pour exécuter cette recette. -->
     <key>MinimumVersion</key>
     <string>0.2.0</string>
+
+<!-- (Facultatif) Si cette recette hérite des "Inputs" et des "Process" d'une autre recette, cela existe et correspond à l''Identifier' de la recette parent. -->
     <key>ParentRecipe</key>
     <string>com.github.INSERM-TLS.download.AdobeReader</string>
+
+<!-- Séquence de processeurs utilisés pour exécuter la recette, ainsi que leurs paramètres. -->
     <key>Process</key>
     <array>
         <dict>
@@ -77,6 +81,7 @@ exit 0
                 <true/>
             </dict>
             <key>Processor</key>
+<!-- Compresse un package développé à l'aide de pkgutil. -->
             <string>FlatPkgUnpacker</string>
         </dict>
         <dict>
@@ -88,6 +93,7 @@ exit 0
                 <dict/>
             </dict>
             <key>Processor</key>
+<!-- Crée une racine de package et une structure de répertoire. -->
             <string>PkgRootCreator</string>
         </dict>
         <dict>
@@ -101,6 +107,7 @@ exit 0
                 <true/>
             </dict>
             <key>Processor</key>
+<!-- Déballer une charge de paquet. -->
             <string>PkgPayloadUnpacker</string>
         </dict>
         <dict>
@@ -114,10 +121,12 @@ exit 0
                 </array>
             </dict>
             <key>Processor</key>
+<!-- Génère un tableau d’installations pour un fichier pkginfo. -->
             <string>MunkiInstallsItemsCreator</string>
         </dict>
         <dict>
             <key>Processor</key>
+<!-- Fusionne deux dictionnaires pkginfo. -->
             <string>MunkiPkginfoMerger</string>
         </dict>
         <dict>
@@ -129,6 +138,7 @@ exit 0
                 <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>
             <key>Processor</key>
+<!-- Importe un ".pkg" ou une ".dmg" dans le dépôt Munki. -->
             <string>MunkiImporter</string>
         </dict>
     </array>

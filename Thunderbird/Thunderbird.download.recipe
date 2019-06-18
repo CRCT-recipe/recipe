@@ -43,7 +43,7 @@
                 <string>%LOCALE%</string>
             </dict>
             <key>Processor</key>
-<!-- Fournit l'URL de la dernière version de Firefox -->
+<!-- Fournit l'URL de la dernière version de Thunderbird -->
             <string>MozillaURLProvider</string>
         </dict>
         <dict>

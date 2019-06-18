@@ -79,7 +79,7 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-
+<!-- Fournit l'URL de la dernière version de GIMP -->
 			<string>GIMPPermissionsFixer</string>
 			<key>Arguments</key>
 			<dict>
