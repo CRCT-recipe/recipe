@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
+
 <dict>
+
+<!-- (Facultatif, mais fortement recommandé) Description utile de la recette et des valeurs spécifiques à l'application que l'administrateur peut souhaiter remplacer. -->
 	<key>Description</key>
 	<string>Downloads the latest version of GIMP from gimp.org and imports into Munki.</string>
+
+<!-- Une chaîne unique identifiant cette recette. Un format suggéré pour l'identifiant est une chaîne de domaine inversé suivie du type de recette et du nom du produit. -->
 	<key>Identifier</key>
 	<string>com.github.INSERM-TLS.munki.GIMP</string>
+
+<!-- Ensemble de variables que l'administrateur peut remplacer sans avoir à modifier directement les paramètres ou la logique de la recette elle-même. -->
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -23,6 +30,7 @@
 			</array>
 			<key>catalogs</key>
 			<array>
+<!-- (Facultatif) Implémente l'application téléchargé dans le catalog "testing" pour permettre par le suite à l'administrateur de la passer dans le catalog "Prod" si il est satisfait de la mise a jour de cette application -->
 				<string>testing</string>
 			</array>
 			<key>category</key>
@@ -41,16 +49,23 @@
 			<true/>
 		</dict>
 	</dict>
+
+<!-- (Facultatif) Version minimale de autopkg requise pour exécuter cette recette. -->
 	<key>MinimumVersion</key>
 	<string>0.5.2</string>
+
+<!-- (Facultatif) Si cette recette hérite des "Inputs" et des "Process" d'une autre recette, cela existe et correspond à l''Identifier' de la recette parent. -->
 	<key>ParentRecipe</key>
 	<string>com.github.INSERM-TLS.download.GIMP</string>
+
+<!-- Séquence de processeurs utilisés pour exécuter la recette, ainsi que leurs paramètres. -->
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Comment</key>
 			<string>GIMP binary has execute bits only for owner. This needs to be fixed before MunkiImporter.</string>
 			<key>Processor</key>
+<!-- Copie chemin_source vers chemin_destination. -->
 			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
@@ -64,6 +79,7 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
+
 			<string>GIMPPermissionsFixer</string>
 			<key>Arguments</key>
 			<dict>
@@ -73,6 +89,7 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
+<!-- Crée une image disque à partir d'un répertoire. -->
 			<string>DmgCreator</string>
 			<key>Arguments</key>
 			<dict>
@@ -91,6 +108,7 @@
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
 			<key>Processor</key>
+<!-- Importe un ".pkg" ou une ".dmg" dans le dépôt Munki. -->
 			<string>MunkiImporter</string>
 		</dict>
 	</array>

@@ -7,7 +7,7 @@
 
 <!-- (Facultatif, mais fortement recommandé) Description utile de la recette et des valeurs spécifiques à l'application que l'administrateur peut souhaiter remplacer. -->
 	<key>Description</key>
-	<string>Downloads the latest version of KeePassX.</string>
+	<string>Télécharge la dernière image disque de KeePassX.</string>
 
 <!-- Une chaîne unique identifiant cette recette. Un format suggéré pour l'identifiant est une chaîne de domaine inversé suivie du type de recette et du nom du produit. -->
 	<key>Identifier</key>
